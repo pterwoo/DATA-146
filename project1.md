@@ -58,8 +58,25 @@ df.loc[df['lifeExp'].idxmin()]
 Executing this shows that the lowst life expectancy recorded in this dataframe is from Rwanda in 1992, with a life expectancy of 23.599. This could have happened due to the lives lost during the Rwandan Civil War that took place from 1990 to 1994. 
 
 ## Using the data frame you created by importing the gapminder.tsv data set, multiply the variable pop by the variable gdpPercap and assign the results to a newly created variable. Then subset and order from highest to lowest the results for Germany, France, Italy and Spain in 2007. Create a table that illustrates your results (you are welcome to either create a table in markdown or plot/save in PyCharm and upload the image). Stretch goal: which of the four European countries exhibited the most significant increase in total gross domestic product during the previous 5-year period (to 2007)?
-
-
+I'm going to call the new column *gdp* since we are multiplying gdp per capita to the population. To create this column:
+```
+i = 0
+gdp = []
+for pop in df['pop']:
+    a = (pop * (df['gdpPercap'].iloc[i]))
+    gdp.append(a)
+    i += 1
+df['gdp'] = gdp
+```
+Then, to subset to follow the criteria mentioned then sort: 
+```
+countries = df['country'].isin(['Italy', 'Spain', 'France', 'Germany'])
+years = df['year'] == 2007
+criteria = countries & years
+newdf = df[criteria]
+newdf.sort_values(by=['gdp'], ascending = False)
+```
+![] (project1_subsetdf.jpeg)
 
 
 

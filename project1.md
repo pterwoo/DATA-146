@@ -74,13 +74,45 @@ countries = df['country'].isin(['Italy', 'Spain', 'France', 'Germany'])
 years = df['year'] == 2007
 criteria = countries & years
 newdf = df[criteria]
-newdf.sort_values(by=['gdp'], ascending = False)
+newdf = newdf.sort_values(by=['gdp'], ascending = False)
 ```
-![] (project1_subsetdf.jpeg)
+![](project1_subsetdf.JPG)
+This is the result. 
 
+## You have been introduced to four logical operators thus far: &, ==, | and ^. Describe each one including its purpose and function. Provide an example of how each might be used in the context of programming.
+&: bitwise AND operator. The overlap (intersection in venn diagram) of the values being compared.
+    ```
+    True & False
+    True & True
+    ```
+    The first operation returns False, since True and False are two different values with no overlap
+    The second operation returns True, since both values are exactly the same and have overlap
+==: compares values of two objects. If they are equivalent, the operation returns a boolean value True
+    ```
+    (1+1) == 2
+    ```
+    Returns True since 2 equals 2
+|: bitwise OR operator. Union of arguments/values being compared
+    ```
+    ("cat" != "dog") | (2 > 1)
+    ```
+    Returns True since both the arguments are equal. If at least one of the arguments above are to be true, the operation will         return True.
+^: bitwise XOR (exclusive OR) operator. Values exclusive/distinct to each argument
+    ```
+    ("cat" != "dog") ^ (2 > 1)
+    ```
+    Returns False since there are no exclusive parts in each argument as they are equivalent. 
 
+## Describe the difference between .loc and .iloc. Provide an example of how to extract a series of consecutive observations from a data frame. Stretch goal: provide an example of how to extract all observations from a series of consecutive columns.
+.loc indexes using a label, in that you have top specify the names of the rows or columns while .iloc indexes using an integer value. To illustrate this:
+```
+newdf.iloc[]
+newdf.loc[575]
+```
+The name of the row with values from Germany is 575 (integer), and the index value for that is 1. 
 
-
+## Describe how an api works. Provide an example of how to construct a request to a remote server in order to pull data, write it to a local file and then import it to your current work session.
+API stands for Application Programming Interface. 
 
 
 

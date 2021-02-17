@@ -106,7 +106,7 @@ This is the result.
 ## Describe the difference between .loc and .iloc. Provide an example of how to extract a series of consecutive observations from a data frame. Stretch goal: provide an example of how to extract all observations from a series of consecutive columns.
 .loc indexes using a label, in that you have top specify the names of the rows or columns while .iloc indexes using an integer value. To illustrate this:
 ```
-newdf.iloc[]
+newdf.iloc[0]
 newdf.loc[575]
 ```
 The name of the row with values from Germany is 575 (integer), and the index value for that is 1. 

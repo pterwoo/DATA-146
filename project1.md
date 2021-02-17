@@ -112,7 +112,24 @@ newdf.loc[575]
 The name of the row with values from Germany is 575 (integer), and the index value for that is 1. 
 
 ## Describe how an api works. Provide an example of how to construct a request to a remote server in order to pull data, write it to a local file and then import it to your current work session.
-API stands for Application Programming Interface. 
+API stands for Application Programming Interface. It involves accessing a remote computer to install packages into the local workspace. 
+```
+import requests
+url = 'https://url'
+r = requests.get(url)
+filename = 'data_folder'
+with open(file_name, 'w') as f:
+    f.write(r.content)
+df = pd.read_csv(name_of_file)
+```
+This will take in the data from the API in the url, write it onto a local file and read it into the workspace.
+
+## Describe the apply() function from the pandas library. What is its purpose? Using apply) to various class objects is an alternative (potentially preferable approach) to writing what other type of command? Why do you think apply() could be a preferred approach?
+apply() allows you to use lamda functions. It offers a shorter and more convenient way of iterating your data instead of having to write out loops which can take longer time and longer lines of code. They are usually used for functions that are only going to be used once and not have to be called again. 
+
+## Also describe an alternative approach to filtering the number of columns in a data frame. Instead of using .iloc, what other approach might be used to select, filter and assign a subset number of variables to a new data frame?
+There are many ways you can subset data other than using the `.iloc` function. `df.filter` can subset rows/columns by the specified index. Calling columns directly can also achieve the same goal, simply executing `df['index']`.
+
 
 
 

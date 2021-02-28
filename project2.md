@@ -12,6 +12,10 @@ Nominal Data: Categorical data that is labled with numbers. Zip codes are nomina
 
 To do this, 
 ```
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
 n = 1000
 a = 5
 b = 5
@@ -92,21 +96,58 @@ plt.show()
 ```
 The resulting plot looks like this:
 
+![](52_07_life_exp.PNG)
 
+To get the ```numpy.log10``` transformation plot:
 
+```
+log_lifeExp07 = np.log10(lifeExp07)
+log_lifeExp52 = np.log10(lifeExp52)
 
+log_min_exp = np.log10(df['lifeExp'].min())
+log_max_exp = np.log10(df['lifeExp'].max())
+n_bins = 10
+my_logbins = np.linspace(log_min_exp, log_max_exp, n_bins + 1)
 
+plt.figure(figsize=(6, 6))
+plt.hist(log_lifeExp52, rwidth=0.9, label= '1952', alpha=0.5, bins = my_logbins)
+plt.hist(log_lifeExp07, rwidth=0.9, label= '2007', alpha=0.5, bins = my_logbins)
+plt.xlabel('$\log_{10}$ Life Expectancy')
+plt.ylabel('Number of Countries')
+plt.show()
+```
+The resulting plot: 
 
+![](52_07_log_life_exp.PNG) 
 
+Comparing the two, you find that the second plot is the better visual representation of overall change. 
+The relatively high variances of the first plot's distributions make it slightly more difficult to gauge
+the difference, whereas the second plot's distributions are easier to spot out the difference.
 
+## Using the seaborn library of functions, produce a box and whiskers plot of population for all countries at the given 5-year intervals. Also apply a logarithmic transformation to this data and produce a second plot. Which of the two resulting box and whiskers plots best communicates the change in population amongst all of these countries from 1952 to 2007?
 
+To create a boxplot of population of all countries at all the years in the dataset: 
+```
+import seaborn as sns
 
+plt.figure(figsize=(6, 6))
+sns.boxplot(x=df['year'], y=df['pop'], color='blue')
+plt.ylabel('Population')
+plt.show()
+```
+The plot looks like this:
 
+![](pop_box.PNG)
 
+The same plot with logarithmic transformation using ```numpy.log10()```
+```
+plt.figure(figsize=(6, 6))
+sns.boxplot(x=df['year'], y=np.log10(df['pop']))
+plt.ylabel('Population')
+plt.show()
+```
+This is the result:
 
+![](log_pop_box.PNG)
 
-
-
-
-
-
+Again, the boxplot with the log transform communicates the change in population better, but this time the difference between the two graphs are very apparent. The raw data plot shows the outliers increasing by the years and the actual boxes are squeezed into the bottom of the plot, making it impossible to tell how most populations generally changed. This is due to the large outliers that deviate significantly from the mean/median; the outliers are so much bigger than the average that the averages are all squeezed into the bottom and not legible. The log transform data reduces the difference between the mean and the large outliers, and display the boxplots in a legible, easy to read manner. 

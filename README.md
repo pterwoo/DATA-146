@@ -5,3 +5,4 @@
 
 ## Projects
 [Project 1](https://pterwoo.github.io/DATA-146/project1.html)
+[Project 2](https://pterwoo.github.io/DATA-146/project2.html)

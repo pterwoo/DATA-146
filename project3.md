@@ -14,9 +14,10 @@ The model did not improve. Again, the results seemed to be largely identical to 
 
 ### Question 4: Next, go back, train and test each of the three previous model types/specifications, but this time use the dataset charleston_act.csv (actual sale prices). How did each of these three models perform after using the dataset that replaced asking price with the actual sale price? What were the training and testing scores you produced? Interpret and assess your output.
 
-With the charleston_act.csv, the model did not perform any better. In fact, the training sccore decreased. K Fold validation without standardization yielded a training score of 0.004 and a testing score of -0.062. With standardization, the training score was again 0.004 and the testing score -0.062. Running the ridge regression, the result did not improve, with a training score of 0.004 and a testing score of -0.055. 
+With the charleston_act.csv, the model did not perform any better. In fact, the training score decreased. K Fold validation without standardization yielded a training score of 0.004 and a testing score of -0.062. With standardization, the training score was again 0.004 and the testing score -0.062. Running the ridge regression, the result did not improve, with a training score of 0.004 and a testing score of -0.055. 
 
 ### Question 5: Go back and also add the variables that indicate the zip code where each individual home is located within Charleston County, South Carolina. Train and test each of the three previous model types/specifications. What was the predictive power of each model? Interpret and assess your output.
+
 
 
 

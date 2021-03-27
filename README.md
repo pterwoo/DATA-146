@@ -11,4 +11,4 @@
 [Project 3](https://pterwoo.github.io/DATA-146/project3.html)
 
 ## Midterm Corrections
-[Midterm Corrections] (https://pterwoo.github.io/DATA-146/midterm_corrections.html)
+[Midterm Corrections](https://pterwoo.github.io/DATA-146/midterm_corrections.html)

@@ -74,8 +74,15 @@ Finding the variable that is the most correlated with the target variable is as 
 housing.corr()
 ```
 This returns a matrix with the correlations of the variable with other variables. 
-[](housing_corr.PNG)
 
-From this matrix we can see that the Med
+![](housing_corr.PNG)
+
+From this matrix we can see that the MedInc is most correlated with our target variable, MedHouseVal
+
+# Question 16
+
+To transform the data, we use the `StandardScaler.fit_transform()` function. 
+
+
 
 

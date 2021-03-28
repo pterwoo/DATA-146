@@ -116,8 +116,15 @@ This returns a coefficient of determination of 0.47
 
 The questions requires performing a linear regression on the standardized dataset. 
 
-
-
+To do this, we can use the previously defined `DoKFold` function. 
+```
+k = 20
+train_scores, test_scores, train_mse, test_mse = DoKFold(lin_reg, X,y,k,True)
+```
+Print the mean values of the training/testing scores
+```
+print(np.mean(train_scores), np.mean(test_scores))
+``
 
 
 

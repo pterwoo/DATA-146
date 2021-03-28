@@ -2,7 +2,7 @@
 
 The first step to answering the questions is importing the necessary libraries and data, and defining the `DoKFold` function.  
 
-#### Importing Libraries 
+##### Importing Libraries 
 
 ```
 import pandas as pd
@@ -16,7 +16,7 @@ from sklearn.datasets import fetch_california_housing
 from sklearn.linear_model import Ridge
 from sklearn.linear_model import Lasso
 ```
-#### Importing the `california_housing` dataset 
+##### Importing the `california_housing` dataset 
 ```
 data = fetch_california_housing(as_frame= True)
 housing = data.frame
@@ -25,7 +25,7 @@ X = data.data
 y = data.target
 ```
 
-#### Defining the `DoKFold` function 
+##### Defining the `DoKFold` function 
 
 ```
 def DoKFold (model, X, y, k, standardize = False, random_state = 146):
@@ -67,7 +67,7 @@ def DoKFold (model, X, y, k, standardize = False, random_state = 146):
         return train_scores, test_scores, train_mse, test_mse
 ```
 
-# Question 15 
+## Question 15 
 
 Finding the variable that is the most correlated with the target variable is as simple as running the following:
 ```
@@ -79,7 +79,7 @@ This returns a matrix with the correlations of the variable with other variables
 
 From this matrix we can see that the MedInc is most correlated with our target variable, MedHouseVal.
 
-# Question 16
+## Question 16
 
 To transform the data, we use the `StandardScaler.fit_transform()` function. 
 ```
@@ -99,6 +99,22 @@ st_Xy_df.corr()
 ![](st_Xy_df_corr.PNG) 
 
 we see that the correlations with the target y values are equivalent to those from question 15. 
+
+## Question 17 
+
+Perform a linear regression with just the MedInc variable and the y value.
+```
+lin_reg = LinearRegression()
+X_df = pd.DataFrame(data.data)
+lin_reg.fit(X_df['MedInc'].values.reshape(-1,1),y)
+np.round(lin_reg.score(X_df['MedInc'].values.reshape(-1,1),y),2)
+```
+This returns a coefficient of determination of 0.47
+
+
+## Question 18
+
+The questions requires performing a linear regression on the standardized dataset. 
 
 
 

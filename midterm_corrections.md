@@ -153,7 +153,10 @@ for a in rid_a_range:
     train, test, train_mse, test_mse = DoKFold(mdl, X, y, k, True, random_state=146)
 
     rid_tr.append(np.mean(train))
-    rid_te.append(np.mean(test)
+    rid_te.append(np.mean(test))
+    rid_tr_mse.append(np.mean(train_mse))
+    rid_te_mse.append(np.mean(test_mse))
+
 
 idx = np.argmax(rid_te)
 print('Optimal alpha value: ' + format(rid_a_range[idx], '.3f'))
@@ -176,12 +179,17 @@ Perform lasso regression.
 las_a_range = np.linspace(0.001, 0.003, 101)
 las_tr = []
 las_te = []
+las_tr_mse = []
+las_te_mse = []
 for a in las_a_range:
     model = Lasso(alpha=a)
     train, test, train_mse, test_mse = DoKFold(model, X, y, 20, True, 146)
 
     las_tr.append(np.mean(train))
     las_te.append(np.mean(test))
+    las_tr_mse.append(np.mean(train_mse))
+    las_te_mse.append(np.mean(train_mse))
+
 
 idx = np.argmax(las_te)
 print('Optimal alpha value: ' + format(las_a_range[idx], '.5f'))
@@ -205,22 +213,59 @@ To find out which regression model has the smallest correlation for the least co
 lin = LR; rid = Ridge(alpha=25.8); las = Lasso(alpha=0.00186)
 lin.fit(st_X, y); rid.fit(st_X,y);las.fit(st_X,y); # st_X is the array of standardized X values on 
 lin.coef_[5],rid.coef_[5],las.coef_[5]
+```
+This returns 
+`(-0.039326266978148866, -0.039412573728940366, -0.03761823364553458)`
 
+The model that returned the lowest correlation was Lasso regression. 
+ 
+I got this question correct.
 
+## Question 22
 
+The process of this question is largely the same as the previous question. We refer back to the table from question 17. The variable most correlted with the target is `MedInc`
 
+Since we already fit the data in the previous question, we just need to execute:
+```
+lin.coef_[0],rid.coef_[0],las.coef_[0]
+```
+which returns
+`(0.82961930428045, 0.8288892465528181, 0.8200140807502059)`
 
+## Question 23
 
+To do this, we simply use the minimum MSE value instead of the maximum R2 value. 
 
+```
+idx = np.argmin(rid_te_mse)
+print('Optimal alpha value: ' + format(rid_a_range[idx], '.3f'))
+print('Training score for this value: ' + format(rid_tr_mse[idx], '.5f'))
+print('Testing score for this value: ' + format(rid_te_mse[idx], '.5f'))
+```
+This returns 
+```
+Optimal alpha value: 26.100
+Training score for this value: 0.52427
+Testing score for this value: 0.52876
+```
+This question and the next question gave me the most issues. I was able to calculate MSE in a for loop, but the method that I used was incorrect. The correction I made here calculates MSE inside the `DoKFold` function and makes it convenient to do the operation above. 
 
+## Question 24
 
-
-
-
-
-
-
-
+We execute the same code from question 23, just with different variables. 
+```
+idx = np.argmin(las_te_mse)
+print('Optimal alpha value: ' + format(las_a_range[idx], '.3f'))
+print('Training score for this value: ' + format(las_tr_mse[idx], '.5f'))
+print('Testing score for this value: ' + format(las_te_mse[idx], '.5f'))
+```
+This returns 
+```
+Optimal alpha value: 0.00186
+Training score for this value: 0.60616
+Testing score for this value: 0.60213
+```
+I had the same problem here as the previous question. 
 
 
 

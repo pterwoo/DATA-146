@@ -79,6 +79,8 @@ This returns a matrix with the correlations of the variable with other variables
 
 From this matrix we can see that the MedInc is most correlated with our target variable, MedHouseVal.
 
+I got this question correct. 
+
 ## Question 16
 
 To transform the data, we use the `StandardScaler.fit_transform()` function. 
@@ -100,6 +102,8 @@ st_Xy_df.corr()
 
 we see that the correlations with the target y values are equivalent to those from question 15. 
 
+I got this question correct. 
+
 ## Question 17 
 
 Perform a linear regression with just the MedInc variable and the y value.
@@ -111,6 +115,7 @@ np.round(lin_reg.score(X_df['MedInc'].values.reshape(-1,1),y),2)
 ```
 This returns a coefficient of determination of 0.47
 
+I got this question correct. 
 
 ## Question 18
 
@@ -156,15 +161,75 @@ print('Training score for this value: ' + format(rid_tr[idx], '.5f'))
 print('Testing score for this value: ' + format(rid_te[idx], '.5f'))
 ```
 This should return:
+```
 Optimal alpha value: 25.800
 Training score: 0.60627
 Testing score: 0.60201
-
-Again, I ran the regression with only 1 feature variable and not the entire dataset. 
+```
+I had the same issue here with the previous question. I used a single feature variable instead of the entire dataset.
 
 ## Question 20
 
 Perform lasso regression. 
+
+```
+las_a_range = np.linspace(0.001, 0.003, 101)
+las_tr = []
+las_te = []
+for a in las_a_range:
+    model = Lasso(alpha=a)
+    train, test, train_mse, test_mse = DoKFold(model, X, y, 20, True, 146)
+
+    las_tr.append(np.mean(train))
+    las_te.append(np.mean(test))
+
+idx = np.argmax(las_te)
+print('Optimal alpha value: ' + format(las_a_range[idx], '.5f'))
+print('Training score for this value: ' + format(las_tr[idx], '.5f'))
+print('Testing score for this value: ' + format(las_te[idx], '.5f'))
+```
+
+This returns:
+```
+Optimal alpha value: 0.00186
+Training score for this value: 0.60616
+Testing score for this value: 0.60213
+```
+Again, I made the mistake of using one feature variable instead of the entire dataset. 
+
+## Question 21 
+
+To find out which regression model has the smallest correlation for the least correlated variable, we must first figure out which variable is the least correlated with the target value. We can refer back to the table generated from question 16. The variable least correlated with the target is `AveOccup`
+
+```
+lin = LR; rid = Ridge(alpha=25.8); las = Lasso(alpha=0.00186)
+lin.fit(st_X, y); rid.fit(st_X,y);las.fit(st_X,y); # st_X is the array of standardized X values on 
+lin.coef_[5],rid.coef_[5],las.coef_[5]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

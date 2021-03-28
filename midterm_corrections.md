@@ -125,11 +125,46 @@ Print the mean values of the training/testing scores
 ```
 print(np.mean(train_scores), np.mean(test_scores))
 ```
+This should return:
+`0.6063019182717753 0.6019800920504694 `
 
+I got this question wrong initially because I misinterpreted the question. I subsetted the dataset to perform linear regression on only the MedInc varaible and the target, not the entire dataset. 
 
+## Question 19 
 
+Perform ridge regression with the same dataset. 
 
+```
+k = 20
+rid_a_range = np.linspace(20, 30, 101)
 
+rid_tr = []
+rid_te = []
+rid_tr_mse = []
+rid_te_mse = []
+
+for a in rid_a_range:
+    mdl = Ridge(alpha=a)
+    train, test, train_mse, test_mse = DoKFold(mdl, X, y, k, True, random_state=146)
+
+    rid_tr.append(np.mean(train))
+    rid_te.append(np.mean(test)
+
+idx = np.argmax(rid_te)
+print('Optimal alpha value: ' + format(rid_a_range[idx], '.3f'))
+print('Training score for this value: ' + format(rid_tr[idx], '.5f'))
+print('Testing score for this value: ' + format(rid_te[idx], '.5f'))
+```
+This should return:
+Optimal alpha value: 25.800
+Training score: 0.60627
+Testing score: 0.60201
+
+Again, I ran the regression with only 1 feature variable and not the entire dataset. 
+
+## Question 20
+
+Perform lasso regression. 
 
 
 

@@ -77,11 +77,40 @@ This returns a matrix with the correlations of the variable with other variables
 
 ![](housing_corr.PNG)
 
-From this matrix we can see that the MedInc is most correlated with our target variable, MedHouseVal
+From this matrix we can see that the MedInc is most correlated with our target variable, MedHouseVal.
 
 # Question 16
 
 To transform the data, we use the `StandardScaler.fit_transform()` function. 
+```
+ss = StandardScaler()
+st_X = ss.fit_transform(X)
+```
+Then, create a dataframe with the standardized X values and the target y values.
+```
+st_X_df = pd.DataFrame(st_X, columns= data.feature_names)
+st_Xy_df = st_X_df.copy()
+st_Xy_df['y'] = y
+```
+Finally, use the same function from question 15 to study the correlations.
+```
+st_Xy_df.corr()
+```
+![](st_Xy_df_corr.PNG) 
+
+we see that the correlations with the target y values are equivalent to those from question 15. 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

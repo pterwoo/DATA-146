@@ -124,7 +124,8 @@ train_scores, test_scores, train_mse, test_mse = DoKFold(lin_reg, X,y,k,True)
 Print the mean values of the training/testing scores
 ```
 print(np.mean(train_scores), np.mean(test_scores))
-``
+```
+
 
 
 

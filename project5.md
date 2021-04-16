@@ -27,9 +27,22 @@ Drop any null values, then cast any float values to integers.
 Set X (feature variables) as every column except for the target variables (`wealthC` and `wealthI`)
 Set y (target variable) as `wealthC` as specified 
 
-### Perform a linear regression and compute the $R^2$. Standardize the features and again computer the $R^2$. Compare the coefficients from each of the two models and describe how they have changed.
+### Perform a linear regression and compute the R^2. Standardize the features and again compute the R^2. Compare the coefficients from each of the two models and describe how they have changed.
 
-We can use the DoKFold function we've used multiple times throughout this course. 
+The R^2 value without K-Fold or standardization: 0.736
+
+The R^2 value with standardization and no K-Fold:  0.736
+
+We can use the DoKFold function defined in class to compute the R^2. 
+
+The R^2 value with K-Fold and no standardization (testing score): 0.756
+
+The R^2 value with K-Fold and standardization (testing score): 0.756
+
+Results show that performing a K-Fold validation instead of running the basic regression was more effective. We also see that standardizing the feature variables did not change the R^2 values. 
+
+### Run a ridge regression and report your best results.
+
 
 
 

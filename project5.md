@@ -53,7 +53,7 @@ Testing Score: 0.735
 
 Plot: 
 
-![](ridge1.png) 
+![](ridge1.PNG) 
 
 ## Run a lasso regression and report your best results.
 
@@ -67,7 +67,41 @@ Testing score: 0.735
 
 Plot: 
 
-![](lasso1.png)
+![](lasso1.PNG)
+
+## Repeat the previous steps using the variable wealthI as your target.
+
+### Ridge Regression:
+
+The alpha range that I set here for the following results was `np.linspace(90,110,20)`
+
+Optimal Alpha value: 97.368
+
+Training score: 0.826
+
+Testing score: 0.825
+
+Plot:
+
+![](ridge2.PNG)
+
+### Lasso Regression:
+
+The alpha range that I set here for the following results was `np.linspace(0.1, 0.2, 10)`
+
+Optimal Alpha value: 0.13333
+
+Training score: 0.826
+
+Testing score: 0.825
+
+Plot:
+
+![](lasso2.PNG) 
+
+## Which of the models produced the best results in predicting wealth of all persons throughout the smaller West African country being described? Support your results with plots, graphs and descriptions of your code and its implementation. You are welcome to incorporate snippets to illustrate an important step, but please do not paste verbose amounts of code within your project report. Alternatively, you are welcome to provide a link in your references at the end of your (part 1) Project 5 report.
+
+There was little to no difference between the different types of regression models. There was some difference in R^2 with linear regression with and without K-Fold; K-Fold performed slightly better. The biggest difference came in changing the target y variable from `wealthC` to `wealthI`. R^2 values were considerably higher with the `wealthI` as the target. Additionally, standardizing the dataset did not seem to have a meaningful difference, as seen when performing linear regression with/without standardization. 
 
 
 

@@ -43,6 +43,33 @@ Results show that performing a K-Fold validation instead of running the basic re
 
 ### Run a ridge regression and report your best results.
 
+The alpha range that I set here for the following results was `np.linspace(70, 80, 20)`
+
+Optimal Alpha value: 73.684
+
+Training Score: 0.736
+
+Testing Score: 0.735
+
+Plot: 
+
+![](ridge1.png) 
+
+## Run a lasso regression and report your best results.
+
+The alpha range that I set here for the following results was `np.linspace(0.001, 0.003, 10)`
+
+Optimal Alpha value: 0.00189
+
+Training score: 0.736
+
+Testing score: 0.735
+
+Plot: 
+
+![](lasso1.png)
+
+
 
 
 

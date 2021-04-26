@@ -12,5 +12,7 @@
 
 [Project 5 - Part 1](https://pterwoo.github.io/DATA-146/project5.html)
 
+[Project 5 - Part 2](https://pterwoo.github.io/DATA-146/project5_2.html)
+
 ## Midterm Corrections
 [Midterm Corrections](https://pterwoo.github.io/DATA-146/midterm_corrections.html)

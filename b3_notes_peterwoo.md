@@ -2,4 +2,5 @@
 
 ## Detrending Time Series
 - Using the `stl` function
-  - fdgdfg 
+  - Seasonal decomposition of time series using Loess modeling
+  - Extracts the seasonal component 
